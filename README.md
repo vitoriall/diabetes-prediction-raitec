@@ -1,54 +1,80 @@
-# 🧠 Pré-processamento de Dados - Projeto RAITec Apoio 2025.1
+# 🧠 Projeto RAITec 2025.1 – Etapa 1: Dados e Pré-processamento
 
-Este repositório contém a primeira etapa do projeto de Machine Learning para previsão de risco de diabetes. O foco aqui é exclusivamente na **leitura e limpeza dos dados**, que será a base para as próximas etapas.
-
----
-
-## 📁 Estrutura do Projeto
-📦 diabetes-prediction/
-├── data/ # Dataset original (não versionado)
-│ └── diabetes.csv
-├── src/
-│ └── data_processing.py # Carregamento e limpeza dos dados
-├── README.md # Este arquivo
+Este repositório representa a **primeira etapa do projeto de Machine Learning** proposto na trilha de Apoio do Trainee RAITec 2025.1.  
+O objetivo é preparar os dados para a construção de um modelo preditivo de risco de diabetes.
 
 ---
 
-## 📌 O que já foi feito
+## ✅ O que já foi feito
 
-- Leitura do dataset (formato `.csv`)
-- Identificação de colunas com valores zero inválidos
-- Substituição de zeros por `NaN`
-- Preenchimento dos dados ausentes com a média de cada coluna
+### 📁 Estrutura atual do projeto:
+
+diabetes-prediction/
+├── data/                  # Dataset original (não versionado)
+│   └── diabetes.csv       # Arquivo de dados
+├── src/                   # Scripts em Python
+│   └── data_processing.py # Carregamento e limpeza dos dados
+├── .gitignore             # Arquivos/pastas ignoradas no Git
+└── README.md              # Este arquivo
+
+
+### 📌 Explicação do que foi implementado:
+
+#### `src/data_processing.py`
+- Lê o arquivo `diabetes.csv`
+- Substitui valores zero por `NaN` nas colunas em que **zero não é um valor possível** (como glicose ou pressão arterial)
+- Preenche os dados ausentes com a **média da coluna**
+- Exibe o resumo estatístico final com `describe()`
+
+#### `.gitignore`
+- Evita versionar pastas e arquivos que não precisam ir para o GitHub, como:
+  - `__pycache__`, arquivos `.pyc`
+  - Saídas (`/outputs`) ou modelos salvos (`/modelos`)
+  - Checkpoints do Jupyter
 
 ---
 
-## 🚀 Como Executar
+## 🧪 Por que essa etapa é importante?
 
-### 1. Requisitos
-Você deve ter instalado:
-- Python 3.8 ou superior
-- pandas
-- numpy
+- O modelo de Machine Learning depende de **dados limpos e consistentes** para aprender.
+- Zeros em variáveis como glicose, BMI ou insulina podem gerar **ruído ou distorcer os resultados**.
+- Essa etapa garante que os dados estejam **preparados corretamente** antes de gerar qualquer gráfico ou treinar um modelo.
 
-### 2. Para rodar o script:
-``` python src/data_processing.py```
+---
 
-### 🔎 Objetivo do Script data_processing.py
-O script:
+## 🔜 Próximos passos (para os membros do grupo)
 
-Lê o arquivo diabetes.csv da pasta /data
+### 👤 Amanda – Análise Exploratória (EDA)
+- Criar o script `notebooks/eda_automatica.py`
+- Gerar gráficos:
+  - Heatmap de correlação
+  - Histogramas e boxplots por classe
+  - Pairplot (opcional)
+- Salvar todos os gráficos em `/outputs`
 
-Corrige colunas que não podem conter zero (Glucose, BloodPressure, etc.)
+### 👤 Camille – Modelagem
+- Criar `src/model_training.py`
+- Testar modelos: Decision Tree, Random Forest, Logistic Regression
+- Separar treino/teste e treinar os modelos
 
-Preenche os dados ausentes com a média de cada coluna
+### 👤 Bruno – Avaliação
+- Criar `src/evaluation.py`
+- Gerar métricas: acurácia, recall, f1-score, matriz de confusão
+- Escolher o melhor modelo
+- Salvar modelo com `joblib` em `/modelos`
 
-Exibe o describe() do dataframe limpo
+### 👤 Pessoa 5 – Integração e Predição
+- Criar `main.py` para rodar todo o projeto
+- Criar `predict.py` para simular entrada de dados reais no modelo salvo
 
-### 🧠 Próximos passos (a serem feitos pelo grupo)
+---
 
-Análise Exploratória (EDA) - Amanda
+## 📌 Dataset utilizado
 
-Modelagem com algoritmos de ML - Camile
+- Nome: **Pima Indians Diabetes Database**
+- Fonte: Kaggle  
+🔗 [Acesse o dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
 
-Avaliação dos modelos -> Bruno e Lucas
+---
+
+
