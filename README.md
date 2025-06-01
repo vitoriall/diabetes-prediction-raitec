@@ -34,7 +34,7 @@ Você deve ter instalado:
 ### 2. Para rodar o script:
 ``` python src/data_processing.py```
 
-🔎 Objetivo do Script data_processing.py
+### 🔎 Objetivo do Script data_processing.py
 O script:
 
 Lê o arquivo diabetes.csv da pasta /data
@@ -45,7 +45,7 @@ Preenche os dados ausentes com a média de cada coluna
 
 Exibe o describe() do dataframe limpo
 
-🧠 Próximos passos (a serem feitos pelo grupo)
+### 🧠 Próximos passos (a serem feitos pelo grupo)
 
 Análise Exploratória (EDA) - Amanda
 
