@@ -1,80 +1,124 @@
-# 🧠 Projeto RAITec 2025.1 – Etapa 1: Dados e Pré-processamento
+# 🧠 Projeto RAITec Apoio 2025.1 – Modelo Preditivo de Diabetes
 
-Este repositório representa a **primeira etapa do projeto de Machine Learning** proposto na trilha de Apoio do Trainee RAITec 2025.1.  
-O objetivo é preparar os dados para a construção de um modelo preditivo de risco de diabetes.
-
----
-
-## ✅ O que já foi feito
-
-### 📁 Estrutura atual do projeto:
-
-diabetes-prediction/
-├── data/                  # Dataset original (não versionado)
-│   └── diabetes.csv       # Arquivo de dados
-├── src/                   # Scripts em Python
-│   └── data_processing.py # Carregamento e limpeza dos dados
-├── .gitignore             # Arquivos/pastas ignoradas no Git
-└── README.md              # Este arquivo
-
-
-### 📌 Explicação do que foi implementado:
-
-#### `src/data_processing.py`
-- Lê o arquivo `diabetes.csv`
-- Substitui valores zero por `NaN` nas colunas em que **zero não é um valor possível** (como glicose ou pressão arterial)
-- Preenche os dados ausentes com a **média da coluna**
-- Exibe o resumo estatístico final com `describe()`
-
-#### `.gitignore`
-- Evita versionar pastas e arquivos que não precisam ir para o GitHub, como:
-  - `__pycache__`, arquivos `.pyc`
-  - Saídas (`/outputs`) ou modelos salvos (`/modelos`)
-  - Checkpoints do Jupyter
+Este repositório contém todas as etapas do desenvolvimento de um modelo de Machine Learning supervisionado para prever o risco de diabetes a partir de dados clínicos simples. O projeto foi realizado por membros do eixo de Apoio do RAITec durante o ciclo trainee 2025.1.
 
 ---
 
-## 🧪 Por que essa etapa é importante?
+## 📌 Objetivo
 
-- O modelo de Machine Learning depende de **dados limpos e consistentes** para aprender.
-- Zeros em variáveis como glicose, BMI ou insulina podem gerar **ruído ou distorcer os resultados**.
-- Essa etapa garante que os dados estejam **preparados corretamente** antes de gerar qualquer gráfico ou treinar um modelo.
+Construir um pipeline completo e funcional de machine learning, desde a limpeza dos dados até a geração de previsões, usando um dataset real. O modelo final foi escolhido com base em métricas como recall, f1-score e acurácia.
 
 ---
 
-## 🔜 Próximos passos (para os membros do grupo)
+## 🧪 Dataset Utilizado
 
-### 👤 Amanda – Análise Exploratória (EDA)
-- Criar o script `notebooks/eda_automatica.py`
-- Gerar gráficos:
-  - Heatmap de correlação
-  - Histogramas e boxplots por classe
-  - Pairplot (opcional)
-- Salvar todos os gráficos em `/outputs`
-
-### 👤 Camille – Modelagem
-- Criar `src/model_training.py`
-- Testar modelos: Decision Tree, Random Forest, Logistic Regression
-- Separar treino/teste e treinar os modelos
-
-### 👤 Bruno – Avaliação
-- Criar `src/evaluation.py`
-- Gerar métricas: acurácia, recall, f1-score, matriz de confusão
-- Escolher o melhor modelo
-- Salvar modelo com `joblib` em `/modelos`
-
-### 👤 Pessoa 5 – Integração e Predição
-- Criar `main.py` para rodar todo o projeto
-- Criar `predict.py` para simular entrada de dados reais no modelo salvo
+- **Nome:** Pima Indians Diabetes Database  
+- **Fonte:** [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
 
 ---
 
-## 📌 Dataset utilizado
+## 🗂️ Estrutura do Projeto
 
-- Nome: **Pima Indians Diabetes Database**
-- Fonte: Kaggle  
-🔗 [Acesse o dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
+diabetes-prediction-raitec/
+├── data/               # Dataset original (.csv)
+├── notebooks/          # Scripts de análise exploratória
+├── src/                # Scripts principais (processamento, treino, avaliação)
+├── models/             # Modelos salvos (.joblib)
+├── graficos/           # Outputs gerados (gráficos, matrizes)
+├── main.py             # Pipeline completo de execução
+├── predict.py          # Script interativo de predição
+├── requirements.txt    # Dependências do projeto
+└── README.md           # Este documento
 
 ---
 
+## ⚙️ Tecnologias e Ferramentas
 
+- Python 3.10+
+
+- VS Code
+
+- Git + GitHub
+
+- Overleaf (documentação)
+
+- Trello (SCRUM)
+
+- Bibliotecas: pandas, numpy, seaborn, matplotlib, scikit-learn, joblib
+
+---
+
+## 👩‍💻 Etapas do Projeto
+1. 📥 Pré-processamento (data_processing.py)
+Identificação de valores 0 inválidos (ex: glicose = 0)
+
+- Substituição por NaN e preenchimento com média da coluna
+
+- Estatísticas descritivas
+
+## 2. 📊 Análise Exploratória (eda_automatica.py)
+Geração de histogramas, boxplots, heatmap, pairplot
+
+- Visualização da distribuição por classe
+
+- Gráficos salvos na pasta /graficos
+
+## 3. 🤖 Modelagem (model_training.py)
+Modelos testados:
+
+- Decision Tree
+
+- Random Forest ✅ (escolhido)
+
+- Logistic Regression
+
+- Divisão em treino e teste (80/20)
+
+## 4. 📈 Avaliação (evaluation.py)
+Geração da matriz de confusão
+
+Métricas:
+
+- Acurácia: 75%
+
+- Recall (classe 1): 0.65
+
+- F1-score: 0.65
+
+- Salvamento do modelo Random Forest com joblib
+
+## 5. 🧪 Predição (predict.py)
+- Recebe dados via terminal
+
+- Carrega o modelo salvo
+
+- Retorna o resultado: 0 (sem risco) ou 1 (com risco)
+
+## 👥 Divisão de Responsabilidades
+| Membro   | Responsável por             |
+| -------- | --------------------------- |
+| Vitória  | Dados e Pré-processamento   |
+| Kim      | Análise Exploratória (EDA)  |
+| Amanda   | Modelagem                   |
+| Bruno    | Avaliação e Salvamento      |
+| Pessoa 5 | Integração Final e Predição |
+
+## 📄 Documentação
+- A documentação final foi elaborada em LaTeX no Overleaf, seguindo o modelo oficial do RAITec. Inclui:
+
+- Visão geral do projeto
+
+- Etapas de desenvolvimento
+
+- Resultados
+
+- Sugestões de aprimoramento
+
+- Conclusão e contribuições para o eixo de Apoio
+
+## 📚 Referências
+- Pima Indians Diabetes Dataset – Kaggle
+
+- Scikit-learn Documentation
+
+- Cursos de Python e ML –  YouTube
