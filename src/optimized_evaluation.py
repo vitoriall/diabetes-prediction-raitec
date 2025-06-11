@@ -46,7 +46,7 @@ def evaluate_model(model, X_test, y_test, limiar=0.3):
 
 if __name__ == '__main__':
     # Caminho do dataset
-    filepath = r"C:\Users\XxConputacion\Downloads\diabetes.csv"
+    filepath = 'data/diabetes.csv'
 
     # 1. Carregar e limpar os dados
     df = load_data(filepath)
